@@ -1,3 +1,4 @@
+<x-layouts.index>
 <main class="min-h-screen relative">
   <!-- Section1 -->
    
@@ -36,3 +37,4 @@
     <!-- End of Section 1 -->
 
 </main>
+</x-layouts.index>

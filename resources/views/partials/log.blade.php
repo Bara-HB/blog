@@ -1,3 +1,4 @@
+<x-layouts.index>
 <main class="min-h-screen">
   <!-- Section1 -->
   <section class=" dm:my-10 bg-slate-800 m-10 p-10 sm:w-1/2 md:w-96 flex flex-col sm:mx-auto rounded-md relative mb-20">
@@ -31,3 +32,4 @@
     <!-- End of Section 1 -->
 
 </main>
+</x-layouts.index>

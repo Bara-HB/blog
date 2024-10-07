@@ -1,3 +1,4 @@
+<x-layouts.index>
 <main>
   <!-- Section1 -->
   <section class="dm:my-10">
@@ -59,3 +60,4 @@
      </section>
     <!-- End of Section2 -->
 </main>
+</x-layouts.index>

@@ -1,4 +1,13 @@
+<x-layouts.index>
 <main class="max-w-7xl text-center m-auto">
+
+  @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+  @endif
+
+
   <!-- Section 1 -->
 
     <section class="md:flex">
@@ -70,3 +79,5 @@
   <!-- End of Section 3 -->
 
 </main>
+
+</x-layouts.index>

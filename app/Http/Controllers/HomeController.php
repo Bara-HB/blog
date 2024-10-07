@@ -17,28 +17,36 @@ class HomeController extends Controller
   // {
   //   return view('partials.home');
   // }
+//   public function show()
+// {
+//     $homeContent = view('partials.home'); // Načtení obsah
+
+//     return view('layouts.index', compact('homeContent')); // Předání proměnné
+// }
+
+
   public function show()
-{
-    $homeContent = view('partials.home'); // Načtení obsah
+  {
+      return view('partials.home'); // Hlavní stránka
+  }
 
-    return view('layouts.index', compact('homeContent')); // Předání proměnné
+  public function articles()
+  {
+      return view('partials.article'); // Stránka článků
+  }
+
+  public function contact()
+  {
+      return view('partials.contact'); // Kontaktní stránka
+  }
 }
 
-public function articles()
-{
-  return view('layouts.index', ['homeContent' => view('partials.article')]);
-}
-
-public function contact()
-{
-  return view('layouts.index', ['homeContent' => view('partials.contact')]);
-}
 
 // public function log()
 // {
 //   return view('layouts.index', ['homeContent' => view('partials.log')]);
 // }
 
-}
+
 
 
