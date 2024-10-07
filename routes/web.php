@@ -13,4 +13,5 @@ Route::get('/log', [AuthController::class, 'log']);
 Route::post('/log', [AuthController::class, 'login']);
 
 Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'store']);
 
