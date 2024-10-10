@@ -16,6 +16,7 @@ Route::get('/register', [AuthController::class, 'showRegister']); // Přesměrov
 
 Route::post('/log', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'store']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Posílání dat článků do databáze
 Route::get('/dashboard', [DashboardController::class, 'show'])

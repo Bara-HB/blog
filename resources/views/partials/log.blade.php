@@ -3,7 +3,18 @@
   <!-- Section1 -->
   <section class=" dm:my-10 bg-slate-800 m-10 p-10 sm:w-1/2 md:w-96 flex flex-col sm:mx-auto rounded-md relative mb-20">
       <h2 class="text-white text-2xl font-semibold mb-5 text-center">Přihlášení</h2>
-        <form action="/log" method="POST">
+        
+      @if ($errors->any())
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+      
+      <form action="/log" method="POST">
           @csrf
           <div class="my-10 flex flex-col">
             <label class="mb-5 text-white" for="email">E-mail</label>

@@ -11,6 +11,6 @@ class DashboardController extends Controller
 {
     public function show() 
     {
-        return view('partials.dashboard');
+        return view('components.layouts.dashboard');
     }
 }

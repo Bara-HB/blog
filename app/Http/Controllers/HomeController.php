@@ -8,23 +8,7 @@ use Illuminate\Httpuse\Request;
 
 class HomeController extends Controller
 {
-  // public function show()
-  // {
-  //   return view('layouts.index');
-  // }
-
-  // public function home()
-  // {
-  //   return view('partials.home');
-  // }
-//   public function show()
-// {
-//     $homeContent = view('partials.home'); // Načtení obsah
-
-//     return view('layouts.index', compact('homeContent')); // Předání proměnné
-// }
-
-
+  
   public function show()
   {
       return view('partials.home'); // Hlavní stránka
@@ -41,11 +25,6 @@ class HomeController extends Controller
   }
 }
 
-
-// public function log()
-// {
-//   return view('layouts.index', ['homeContent' => view('partials.log')]);
-// }
 
 
 
