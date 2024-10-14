@@ -11,6 +11,23 @@ class DashboardController extends Controller
 {
     public function show() 
     {
-        return view('components.layouts.dashboard');
+        
+        $blog = Blog::where('user_id', Auth::id())->get();
+        
+        return view('components.layouts.dashboard',[
+            "blog" => $blog
+        ]);
+        
+    }
+
+    public function store(Request $request)
+    {
+        $blog = Blog::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('dashboard');
     }
 }

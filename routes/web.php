@@ -23,3 +23,8 @@ Route::get('/dashboard', [DashboardController::class, 'show'])
   ->middleware(['auth'])
   ->name('dashboard');
 
+// Posílání dat článků do databáze
+Route::post('/dashboard', [DashboardController::class, 'store'])
+  ->middleware(['auth'])
+  ->name('store.dashboard');
+
