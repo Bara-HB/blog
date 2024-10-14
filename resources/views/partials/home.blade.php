@@ -13,7 +13,6 @@
     </div>
   @endif
   <!-- Section 1 -->
-
     <section class="md:flex">
       <div class="md:w-1/2 flex">
         <p class="text-white text-center text-2xl/loose self-center p-10 lg:p-28">"Vyzkoušejte naši cestu k hubnutí - žádné diety, žádné doplňky, jen opravdové jídlo."</p>

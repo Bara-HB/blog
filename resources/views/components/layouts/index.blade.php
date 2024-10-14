@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>@yield('title')</title>
@@ -94,17 +95,48 @@
   
          <div class="xl:mt-28 lg:mt-12 hidden lg:block">
           <div class="relative flex justify-center">
-            {{-- <p class="absolute text-white font-bold text-6 uppercase w-1/2 flex justify-center text-center">“Zdravé hubnutí přirozenou cestou.”</p> --}}
-            <p class="absolute text-white text-6 text-xl uppercase w-1/2 flex justify-center text-center max-w-2xl">"Dosáhněte své vysněné váhy bez suplementů - pouze s pomocí vyvážené stravy a zdravého životního stylu."</p>
+            <p x-data="{
+              startingAnimation: { opacity: 0, scale: 4 },
+              endingAnimation: { opacity: 1, scale: 1, stagger: 0.07, duration: 1, ease: 'expo.out' },
+              addCNDScript: true,
+              animateText() {
+                  $el.classList.remove('invisible');
+                  gsap.fromTo($el.children, this.startingAnimation, this.endingAnimation);
+              },
+              splitCharactersIntoSpans(element) {
+                  text = element.innerHTML;
+                  modifiedHTML = [];
+                  for (var i = 0; i < text.length; i++) {
+                      attributes = '';
+                      if(text[i].trim()){ attributes = 'class=\'inline-block\''; }
+                      modifiedHTML.push('<span ' + attributes + '>' + text[i] + '</span>');
+                  }
+                  element.innerHTML = modifiedHTML.join('');
+              },
+              addScriptToHead(url) {
+                  script = document.createElement('script');
+                  script.src = url;
+                  document.head.appendChild(script);
+              }
+          }"
+          x-init="
+              splitCharactersIntoSpans($el);
+              if(addCNDScript){
+                  addScriptToHead('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js');
+              }
+              gsapInterval = setInterval(function(){
+                  if(typeof gsap !== 'undefined'){
+                      animateText();
+                      clearInterval(gsapInterval);
+                  }
+              }, 5);
+          " class="absolute text-white text-6 text-xl uppercase flex justify-center text-center max-w-2xl">"Zdravé hubnutí přirozenou cestou."</p>
           </div>
         </div>
     </header>
-
-
     
     {{ $slot }}
     
-
     <footer>
 
       <div class="bg-textpink h-16 mt-20 flex justify-center items-center">
@@ -122,7 +154,5 @@
     }
 //End of Navbar
 </script>
-<script src="script.js"></script>
-
   </body>
 </html>

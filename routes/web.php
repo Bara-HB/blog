@@ -28,3 +28,8 @@ Route::post('/dashboard', [DashboardController::class, 'store'])
   ->middleware(['auth'])
   ->name('store.dashboard');
 
+  // Smazání článklu
+Route::post('/dashboard_delete', [DashboardController::class, 'destroy'])
+->middleware(['auth'])
+->name('destroy.dashboard');
+
