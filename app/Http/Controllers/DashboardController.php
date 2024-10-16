@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\blog;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function show() 
     {
         // Použijte paginate() pro načtení článků
-        $blog = blog::where('user_id', Auth::id())->paginate(8);
+        $blog = Blog::where('user_id', Auth::id())->paginate(8);
 
         // $blog = blog::where('user_id', Auth::id())->get();
         
@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
-        $blog = blog::create([
+        $blog = Blog::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
             'content' => $request->content,
@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
     public function destroy(Request $request)
     {
-        $blog = blog::find($request->id);
+        $blog = Blog::find($request->id);
 
         if (!$blog) {
             return redirect()->back()->with('error', 'Článek nebyl nalezen.');

@@ -9,14 +9,12 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $table = 'blog';
+    protected $table = 'blog'; // Tabulka by měla být 'blogs' nebo 'blog', podle tvého nastavení v databázi
 
     protected $fillable = [
         'user_id',
-        'id',
         'title',
         'content',
         'image_path',
     ];
-
 }
