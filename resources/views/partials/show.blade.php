@@ -6,8 +6,9 @@
         <div class="bg-gray-800 rounded-lg shadow-lg p-6">
           <img class="float-left w-48 h-48 object-cover mb-4 mr-4" src="{{ asset($blog->image_path) }}" alt="Obrázek k článku">
           <div class="">
-                <h2 class="text-gray-100 text-2xl font-bold mb-8">{{ $blog->title }}</h2>
-                <p class="text-gray-200">{{ $blog->content }}</p>
+            <h2 class="text-gray-100 text-2xl font-bold mb-8">{{ $blog->title }}</h2>
+            <p class="text-gray-200">{{ $blog->content }}</p>
+            <a href="/article" class="text-blue-400 underline">Zpět na články...</a>
             </div>
             <div class="clear-both"></div>
         </div>

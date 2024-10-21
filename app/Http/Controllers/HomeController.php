@@ -10,9 +10,7 @@ class HomeController extends Controller
   
   public function show()
   {
-      // return view('partials.home'); // Hlavní stránka
-
-      // Načtení všech článků z tabulky 'blog'
+    // Načtení všech článků z tabulky 'blog'
     $blogs = \App\Models\Blog::all();
 
     // Předání proměnné $blogs do view 'partials.home'
@@ -21,25 +19,18 @@ class HomeController extends Controller
 
   public function articles()
   {
-
+    // Načtení všech článků z tabulky 'blog'
     $blogs = Blog::all();
 
-      return view('partials.article', ["blogs"=>$blogs]); // Stránka článků
-
+    // Předání proměnné $blogs do view 'partials.article'
+    return view('partials.article', ["blogs"=>$blogs]);
   }
 
   public function contact()
   {
-      return view('partials.contact'); // Kontaktní stránka
+    // Přesměrování na kontaktní stránku
+    return view('partials.contact');
   }
-
-
-  // // Získání článků z blog
-  // public function index()
-  //   {
-  //       $blogs = Blog::all(); // Načtení všech záznamů z tabulky 'blog'
-  //       return view('partials.home', compact('blogs'));
-  //   }
 
 }
 

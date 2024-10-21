@@ -11,17 +11,15 @@ use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
+    // Načtení článků z databáze
     public function show() 
     {
         // Použijte paginate() pro načtení článků
         $blog = Blog::where('user_id', Auth::id())->paginate(8);
-
-        // $blog = blog::where('user_id', Auth::id())->get();
-        
+        // Zobrazení dat článků z databáze
         return view('components.layouts.dashboard',[
             "blog" => $blog
         ]);
-        
     }
 
     public function store(Request $request)

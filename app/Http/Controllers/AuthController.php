@@ -14,12 +14,14 @@ class AuthController extends Controller
   //Zobrazení stránek
   public function showLog()
     {
-        return view('partials.log'); // Zobrazit login stránku
+      // Zobrazit login stránku
+      return view('partials.log');
     }
 
   public function showRegister()
     {
-        return view('partials.register'); // Zobrazit registrační stránku
+      // Zobrazit registrační stránku
+      return view('partials.register');
     }
 
 
@@ -34,7 +36,6 @@ class AuthController extends Controller
       ]);
 
      // Pokus o přihlášení uživatele
-
       if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
         return redirect()->intended('dashboard')->with('success', 'Přihlášení bylo úspěšné!');
@@ -66,6 +67,8 @@ class AuthController extends Controller
     return redirect('/')->with('success', 'Registrace byla úspěšná!');
   }
 
+
+  // Odhlášení uživatele
   public function logout(Request $request): RedirectResponse
   {
     // Odhlásí uživatele
@@ -80,5 +83,4 @@ class AuthController extends Controller
     // Přesměruje uživatele na domovskou stránku
     return redirect('/')->with('success', 'Byli jste úspěšně odhlášeni!'); 
   }
-
 }

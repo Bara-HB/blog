@@ -25,7 +25,7 @@ Route::post('/log', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Posílání dat článků do databáze
+// Zobrazení dat článků z databáze
 Route::get('/dashboard', [DashboardController::class, 'show'])
     ->middleware(['auth'])
     ->name('dashboard');

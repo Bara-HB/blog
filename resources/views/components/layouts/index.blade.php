@@ -18,7 +18,7 @@
   
       <div class="bg-bgpink
                     w-[150vw] 
-                    h-[150vw]
+                    h-[140vw]
                     opacity-50 
                     absolute 
                     top-[-130vw] 
