@@ -25,6 +25,7 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
+        $imagePath= $request->file('image')->store('updats', 'public');
         // Vytvoření nového blogu v databázi
         $blog = Blog::create([
             // Uložení ID aktuálně přihlášeného uživatele
@@ -33,6 +34,8 @@ class DashboardController extends Controller
             'title' => $request->title,
             // Uložení obsahu blogu z dat odeslaných uživatelským požadavkem
             'content' => $request->content,
+
+            'image_path' => $imagePath,
         ]);
 
         // Přesměrování uživatele na stránku řídicího panelu po úspěšném uložení
@@ -62,29 +65,31 @@ class DashboardController extends Controller
 
     public function edit(Blog $id)
     {
-    
+        // Vrátí pohled ('partials.edit') a předá mu data článku ('blog'), který chceme upravit.
+        // Parametr $id je instancí modelu Blog, což umožňuje přímý přístup k datům článku pomocí jeho ID.
         return view('partials.edit', ['blog'=>$id]);
-
-
     }
 
 
     public function update(Request $request)
     {
-
+        // Validace formuláře, zajišťuje, že pole 'title' a 'content' nejsou prázdná.
         $validate = $request->validate([
             'title' => 'required',
             'content' => 'required',
         ]);
 
+        // Vyhledá článek podle ID předaného ve formuláři.
+        // Používá se metoda first(), aby se získal první záznam, který odpovídá danému ID.
         $blog = Blog::where('id', $request->id)->first();
 
+        // Aktualizuje hodnoty 'title' a 'content' pro nalezený článek.
         $blog->update([
             'title' => $request->title,
             'content' => $request->content,
         ]);
 
-        // Přesměrování uživatele na stránku řídicího panelu po úspěšném uložení
+        // Přesměruje uživatele na dashboard (řídicí panel) po úspěšném uložení změn článku.
         return redirect()->route('dashboard');
     }
 }

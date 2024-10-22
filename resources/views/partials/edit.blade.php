@@ -21,7 +21,7 @@
   </header>
   <main class="">
       <div class="bg-slate-800 m-auto p-4 rounded-md w-full max-w-lg">
-          <h2 class="text-white mb-4">Upravit článek</h2>
+          <h2 class="text-white text-xl text-center">Upravit článek</h2>
           <form action="/edit_update" method="POST" class="bg-slate-800 my-10 p-4 rounded-md">
             @csrf
             <input type="hidden" value="{{$blog->id}}" name="id">

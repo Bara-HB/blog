@@ -1,12 +1,6 @@
 <x-layouts.index>
 <main class="max-w-7xl text-center m-auto">
 
-  @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-  @endif
-
   @if (session('success'))
     <div class="bg-gray-800 border text-gray-200 px-4 py-3 rounded mb-4" role="alert">
         {{ session('success') }}
