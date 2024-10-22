@@ -40,11 +40,21 @@ Route::post('/dashboard_delete', [DashboardController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('destroy.dashboard');
 
-// Trasy pro blogy
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index'); // Pro seznam blogů
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blogs.show'); // Pro zobrazení jednoho blogu
-
-// Trasa pro zobrazení domovské stránky
-Route::get('/home', [HomeController::class, 'show'])->name('home');
-
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blogs.show');
+    
+    // Trasy pro blogy
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index'); // Pro seznam blogů
+    Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blogs.show'); // Pro zobrazení jednoho blogu
+    
+    // Trasa pro zobrazení domovské stránky
+    Route::get('/home', [HomeController::class, 'show'])->name('home');
+    
+    Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blogs.show');
+    
+    Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('edit');
+    
+    Route::post('/edit/{id}', [DashboardController::class, 'update'])->name('update');
+    
+    // Uprava článků
+    Route::post('/edit_update', [DashboardController::class, 'update'])
+        ->middleware(['auth'])
+        ->name('update');

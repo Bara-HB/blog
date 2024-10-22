@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,11 +34,11 @@
     
       <div class="flex flex-col">
           <label for="content" class="my-4 text-white">Článek</label>
-          <textarea name="content" id="content" rows="5" class="flex w-1/2 px-3 py-2 text-sm bg-white border rounded-md border-neutral-300 ring-offset-background placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50" required></textarea>
+          <textarea name="content" id="content" rows="20" class="flex md:w-2/3 px-3 py-2 text-sm bg-white border rounded-md border-neutral-300 ring-offset-background placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50" required></textarea>
       </div>
     
       <div class="">
-          <button type="submit" value="Odeslat" class="my-4 px-5 py-2 text-textpink font-semibold text-xl hover:text-white hover:underline bg-black rounded-md">Odeslat</button>
+          <button type="submit" value="Odeslat" class="my-4 px-5 py-2 text-white font-semibold text-xl hover:text-white hover:underline bg-black rounded-md">Odeslat</button>
       </div>
     </form>
 
@@ -56,7 +56,7 @@
                   </p>
                   <div class="flex flex-col sm:flex-row gap-2">
                     <button class="inline-flex items-center justify-center w-full sm:w-auto h-10 px-4 py-2 text-sm font-medium text-white transition-colors rounded-md bg-neutral-950 hover:bg-neutral-950/70">
-                        <span>Upravit</span>
+                        <a href="/edit/{{$item->id}}">Upravit</a>
                     </button>
   
                     <form action="/dashboard_delete" method="POST" name="id">

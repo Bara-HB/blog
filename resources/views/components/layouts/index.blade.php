@@ -81,7 +81,7 @@
                 <a href="/article" class="font-semibold text-xl hover:text-white hover:underline">Články</a>
               </li>
   
-              <li class="mx-4 my-6 md:my-0">
+              <li class="mx-4 my-6 md:my-0 hidden">
                 <a href="/contact" class="font-semibold text-xl hover:text-white hover:underline">Kontakty</a>
               </li>
   
@@ -134,6 +134,7 @@
           </div>
         </div>
     </header>
+ 
     
     {{ $slot }}
     
