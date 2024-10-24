@@ -17,6 +17,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 // Přesměrování na log
 Route::get('/log', [AuthController::class, 'showLog']); 
+
 // Přesměrování na registrační stránku
 Route::get('/register', [AuthController::class, 'showRegister']); 
 

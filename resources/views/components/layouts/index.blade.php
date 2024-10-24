@@ -18,7 +18,7 @@
   
       <div class="bg-bgpink
                     w-[150vw] 
-                    h-[140vw]
+                    h-[145vw]
                     opacity-50 
                     absolute 
                     top-[-130vw] 
@@ -93,45 +93,8 @@
           </nav>
         </div>
   
-         <div class="xl:mt-28 lg:mt-12 hidden lg:block">
-          <div class="relative flex justify-center">
-            <p x-data="{
-              startingAnimation: { opacity: 0, scale: 4 },
-              endingAnimation: { opacity: 1, scale: 1, stagger: 0.07, duration: 1, ease: 'expo.out' },
-              addCNDScript: true,
-              animateText() {
-                  $el.classList.remove('invisible');
-                  gsap.fromTo($el.children, this.startingAnimation, this.endingAnimation);
-              },
-              splitCharactersIntoSpans(element) {
-                  text = element.innerHTML;
-                  modifiedHTML = [];
-                  for (var i = 0; i < text.length; i++) {
-                      attributes = '';
-                      if(text[i].trim()){ attributes = 'class=\'inline-block\''; }
-                      modifiedHTML.push('<span ' + attributes + '>' + text[i] + '</span>');
-                  }
-                  element.innerHTML = modifiedHTML.join('');
-              },
-              addScriptToHead(url) {
-                  script = document.createElement('script');
-                  script.src = url;
-                  document.head.appendChild(script);
-              }
-          }"
-          x-init="
-              splitCharactersIntoSpans($el);
-              if(addCNDScript){
-                  addScriptToHead('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js');
-              }
-              gsapInterval = setInterval(function(){
-                  if(typeof gsap !== 'undefined'){
-                      animateText();
-                      clearInterval(gsapInterval);
-                  }
-              }, 5);
-          " class="absolute text-white text-6 text-xl uppercase flex justify-center text-center max-w-2xl">"Zdravé hubnutí přirozenou cestou."</p>
-          </div>
+        <div class="hidden md:list-item fade-in-text relative text-white opacity-0 transition-opacity duration-[2000ms] text-xl uppercase text-center mt-12 xl:mt-16 mb-4 mx-4">
+          "Zdravé hubnutí přirozenou cestou."
         </div>
     </header>
  
@@ -141,19 +104,86 @@
     <footer>
 
       <div class="bg-textpink h-16 mt-20 flex justify-center items-center">
-        <p class="text-white">© 2024 Copyright Barbora Hatony Blahová.</p>
+        <p class="text-white text-xs">© 2024 Copyright Barbora Hatony Blahová.</p>
       </div>
 
     </footer>
 </div>
 
+{{-- <script src="{{ asset('js/script.js') }}"></script> --}}
+
 <script>
 //Navbar
-  function Menu(e){
-      let list = document.querySelector('ul');
-      e.name === 'menu' ? (e.name = "close",list.classList.add('top-[40px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
-    }
+function Menu(e){
+  let list = document.querySelector('ul');
+  e.name === 'menu' ? (e.name = "close",list.classList.add('top-[40px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
+}
 //End of Navbar
+
+
+// Čeká na načtení celého DOM, než se začne vykonávat kód
+document.addEventListener('DOMContentLoaded', () => {
+  // Najdi všechny prvky s třídou 'fade-in-text'
+  const elements = document.querySelectorAll('.fade-in-text');
+
+  // Pro každý nalezený prvek
+  elements.forEach((element, index) => {
+    // Nastaví zpoždění pro každou animaci, aby se zobrazovaly postupně
+    setTimeout(() => {
+      // Přidá třídu 'opacity-100', čímž se prvek stane viditelným
+      element.classList.add('opacity-100');
+    }, 500 * (index + 1)); // Zpoždění se zvyšuje s indexem prvku
+  });
+});
+
+// Další posluchač pro DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Najdi prvek s ID 'animated-text'
+  const textElement = document.getElementById('animated-text');
+
+  // Počká 500 ms a pak spustí animaci
+  setTimeout(() => {
+      // Přidá třídy pro animaci: opacity-100 a resetuje pozici
+      textElement.classList.add('opacity-100', 'translate-x-0');
+      // Odebere třídu, která posunula prvek mimo obrazovku
+      textElement.classList.remove('-translate-x-10');
+  }, 500); // Zpoždění 500 ms
+});
+
+// Další posluchač pro DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Najdi prvek s ID 'animated-content' a sekci 'section-3'
+  const contentElement = document.getElementById('animated-content');
+  const section = document.getElementById('section-3');
+
+  // Funkce pro kontrolu, zda je sekce viditelná v okně prohlížeče
+  function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect(); // Získá pozici prvku
+      return (
+          // Kontroluje, zda je prvek viditelný v okně prohlížeče
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+  }
+
+  // Funkce pro spuštění animace při posouvání
+  function handleScroll() {
+      // Kontroluje, zda je sekce viditelná a zda má obsah třídu 'opacity-0'
+      if (isElementInViewport(section) && contentElement.classList.contains('opacity-0')) {
+          // Přidá třídy pro animaci
+          contentElement.classList.add('opacity-100', 'translate-x-0');
+          // Odebere třídu, která posunula obsah mimo obrazovku
+          contentElement.classList.remove('translate-x-10');
+          // Odstraní posluchač události, aby se animace spustila pouze jednou
+          window.removeEventListener('scroll', handleScroll);
+      }
+  }
+
+  // Přidá posluchač události pro posouvání
+  window.addEventListener('scroll', handleScroll);
+});
 </script>
   </body>
 </html>

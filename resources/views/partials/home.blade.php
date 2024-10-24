@@ -10,7 +10,7 @@
   <!-- Section 1 -->
     <section class="md:flex md:items-center">
       <div class="md:w-1/2 flex">
-          <p class="text-white text-center text-2xl leading-loose self-center p-10 lg:p-28">
+          <p id="animated-text" class="fade-in-left opacity-0 transform -translate-x-10 transition-all duration-[2000ms] text-white text-center text-2xl leading-loose self-center p-10 lg:p-28">
               "Vyzkoušejte naši cestu k hubnutí - žádné diety, žádné doplňky, jen opravdové jídlo."
           </p>
       </div>
@@ -42,21 +42,23 @@
   <!-- End of Section 2 -->
 
   <!-- Section 3 -->
-    <section class="w-full md:flex md:items-center">
-      <div class="md:w-1/2 order-2">
-          <h2 class="text-white text-center text-2xl leading-loose pt-10 px-10">"Jak vám pomůžeme dosáhnout vaší cílové váhy?"</h2>
-          <ul class="text-white text-center text-lg leading-loose p-10">
-              <li>1. Pochopíte, proč je voda důležitá a co vám přinese.</li>
-              <li>2. Ujasníte si, které potraviny jsou vhodné k redukci váhy, a se kterými byste to neměli přehánět.</li>
-              <li>3. Přijdete na to, proč je metr vaším kamarádem.</li>
-              <li>4. Postupem času si vybudujete sebevědomí.</li>
-          </ul>
-      </div>
-      <div class="md:w-1/2 p-6">
-          <img class="w-full h-auto max-w-lg object-cover mx-auto" src="{{ asset('images/apple.jpg') }}" alt="Jablko">
-      </div>
-    </section>
-  <!-- End of Section 3 -->
+<section class="w-full md:flex md:items-center" id="section-3">
+  <div id="animated-content" class="md:w-1/2 order-2 flex flex-col opacity-0 transform translate-x-10 transition-all duration-1000">
+      <h2 class="text-white text-center text-2xl leading-loose pt-10 px-10">
+          "Jak vám pomůžeme dosáhnout vaší cílové váhy?"
+      </h2>
+      <ul class="text-white text-center text-lg leading-loose p-10">
+          <li>1. Pochopíte, proč je voda důležitá a co vám přinese.</li>
+          <li>2. Ujasníte si, které potraviny jsou vhodné k redukci váhy, a se kterými byste to neměli přehánět.</li>
+          <li>3. Přijdete na to, proč je metr vaším kamarádem.</li>
+          <li>4. Postupem času si vybudujete sebevědomí.</li>
+      </ul>
+  </div>
+  <div class="md:w-1/2 p-6">
+      <img class="w-full h-auto max-w-lg object-cover mx-auto" src="{{ asset('images/apple.jpg') }}" alt="Jablko">
+  </div>
+</section>
+<!-- End of Section 3 -->
 
 </main>
 

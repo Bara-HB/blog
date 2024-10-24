@@ -24,8 +24,6 @@ class AuthController extends Controller
       return view('partials.register');
     }
 
-
-
   // Přihlášení uživatele
   public function login(Request $request)
     {
